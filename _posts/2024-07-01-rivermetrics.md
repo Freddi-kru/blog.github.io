@@ -49,7 +49,7 @@ Alternatively, the models can be added one by one to the Processing Toolbox usin
 ---
 
 ## River Axis Extraction
-The riverbed axis is an input to both the RiverMetrics plugin and the _**Braiding-Width 1: measure**_ model.
+The riverbed axis is an input to both the RiverMetrics plugin and the _**Braiding-Width 1: measure**_ model..
 
 ### 🏞️ Concepts of river geomorphology
 In geomorphology, the axis of the riverbed is defined as the median line formed by the points at the same distance from the banks. The axis is determined from the polygon of the bankfull riverbed.
