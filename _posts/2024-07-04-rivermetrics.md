@@ -1,6 +1,6 @@
 ---
-title: RiverMetrics - Qgis Processing
-date: 2024-07-01 12:00:00 +0000
+title: Rivermetrics plugin
+date: 2024-07-04 14:30:00 +0000
 categories: [Gis, Qgis]
 tags: [gis, Qgis, processing, manual]     # TAG names should always be lowercase
 ---
@@ -13,7 +13,8 @@ It is developed in [Python-3 environment](www.python.org) and is compatible with
 
 The plugin is divided into two parts: the first part is an experimental plugin with a dock in the main QGIS interface, while the second part is a set of tools integrated into QGIS processing.
 
-> **Note**: The [RiverMetrics plugin](https://github.com/pierluigiderosa/RiverMetrics.git) is in the official QGIS repository (experimental flag) and can be easily installed using the standard procedure, via the **Plugin Manager**. 
+> **Note**: The [RiverMetrics plugin](https://github.com/pierluigiderosa/RiverMetrics.git) is in the official QGIS repository (experimental flag) and can be easily installed using the standard procedure, via **Plugin Manager**.
+{: .prompt-info }
 
  The QGIS RiverMetrics processing tools can be found here.
 
@@ -47,9 +48,8 @@ Alternatively, the models can be added one by one to the Processing Toolbox usin
 ![processing toolbox button](https://raw.githubusercontent.com/Freddi-kru/Rivermetrics-plugin---processing/main/other/images/pulsante_processing.jpg)
 
 ---
-
 ## River Axis Extraction
-The riverbed axis is an input to both the RiverMetrics plugin and the _**Braiding-Width 1: measure**_ model..
+The riverbed axis is an input to both the RiverMetrics plugin and the _**Braiding-Width 1: measure**_ model.
 
 ### 🏞️ Concepts of river geomorphology
 In geomorphology, the axis of the riverbed is defined as the median line formed by the points at the same distance from the banks. The axis is determined from the polygon of the bankfull riverbed.
@@ -59,8 +59,9 @@ The bankfull riverbed can be identified from remotely sensed imagery and include
 ### 🛠️ Model operation
 The first operation performed by the model is to eliminate from the polygon of the bankfull riverbed the holes caused by the presence of longitudinal tree-covered bars, known as 'islands'. This requires a threshold (maximum area - Sistem Reference units<sup>2</sup>), which is set to 5000 by default.
 
-The axis is obtained by a process of "skeletonisation" of the polygon using the GRASS gis _**v.voronoi** [^1]_ tool present in the Processing Toolbox.
-[^1]: [GRASS Gis manual pages](https://grass.osgeo.org/grass83/manuals/v.voronoi.html)
+The axis is obtained by a process of "skeletonisation" of the polygon using the GRASS gis _**v.voronoi** [^nota]_ tool present in the Processing Toolbox.
+
+ [^nota]: [GRASS Gis manual pages](https://grass.osgeo.org/grass83/manuals/v.voronoi.html)
 
 As the line obtained may be excessively fragmented, a simplification is carried out to remove nodes that are closer than a threshold (Sistem Reference units) defined by the user. The default value is 1.
 
@@ -84,4 +85,5 @@ As the resulting line may be split into several parts, the initial vertices of t
 | Non-simplified axis | LineString (singleparts) |  Raw axis line. It can be excessively fragmented  (_v.voronoi_ output) |
 | Initial vertices | Point | Initial vertices of the axis line parts, if split. Created to help locate the different parts of the axis line |
 | Bankfull riverbed | Polygon (singleparts) | Bankfull riverbed without holes/islands. It is the result of the hole removal process |
+
 
